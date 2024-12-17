@@ -239,6 +239,7 @@ declare global {
         manageConnection?: jotai.Atom<boolean>;
         noPadding?: jotai.Atom<boolean>;
         filterOutNowsh?: jotai.Atom<boolean>;
+        content?:jotai.Atom<string>;
 
         onBack?: () => void;
         onForward?: () => void;

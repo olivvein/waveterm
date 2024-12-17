@@ -593,6 +593,19 @@ function TableBody({
                             await createBlock(blockDef);
                         }),
                 },
+				{
+                    label: "Open Preview in React",
+                    click: () =>
+                        fireAndForget(async () => {
+                            const blockDef: BlockDef = {
+                                meta: {
+                                    view: "js",
+                                    file: finfo.path,
+                                },
+                            };
+                            await createBlock(blockDef);
+                        }),
+                },
             ];
             if (finfo.mimetype == "directory") {
                 menu.push({

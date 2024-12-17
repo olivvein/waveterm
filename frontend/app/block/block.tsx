@@ -31,6 +31,7 @@ import { QuickTipsView, QuickTipsViewModel } from "@/view/quicktipsview/quicktip
 import { TermViewModel, TerminalView, makeTerminalModel } from "@/view/term/term";
 import { WaveAi, WaveAiModel, makeWaveAiViewModel } from "@/view/waveai/waveai";
 import { WebView, WebViewModel, makeWebViewModel } from "@/view/webview/webview";
+import { JsView, JsViewModel, makeJsViewModel } from "@/view/jsview/jsview";
 import clsx from "clsx";
 import { atom, useAtomValue } from "jotai";
 import { Suspense, memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
@@ -42,10 +43,21 @@ function makeViewModel(blockId: string, blockView: string, nodeModel: BlockNodeM
     if (blockView === "term") {
         return makeTerminalModel(blockId, nodeModel);
     }
+
+    if (blockView === "js") {
+		console.log("js");
+		console.log(nodeModel);
+		console.log(blockView);
+        return makeJsViewModel(blockId, nodeModel);
+	}
+
+
     if (blockView === "preview") {
         return makePreviewModel(blockId, nodeModel);
     }
     if (blockView === "web") {
+		console.log("web");
+		console.log(nodeModel);
         return makeWebViewModel(blockId, nodeModel);
     }
     if (blockView === "waveai") {
@@ -74,7 +86,13 @@ function getViewElem(
     if (isBlank(blockView)) {
         return <CenteredDiv>No View</CenteredDiv>;
     }
-    if (blockView === "term") {
+
+    if (blockView === "js") {
+		console.log('js render');
+		console.log(viewModel);
+        return <JsView key={blockId} blockId={blockId} model={viewModel as JsViewModel} />;
+	}
+	if (blockView === "term") {
         return <TerminalView key={blockId} blockId={blockId} model={viewModel as TermViewModel} />;
     }
     if (blockView === "preview") {

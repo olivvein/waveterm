@@ -419,6 +419,7 @@ declare global {
 
     // waveobj.MetaTSType
     type MetaType = {
+		content: string;
         view?: string;
         controller?: string;
         file?: string;
