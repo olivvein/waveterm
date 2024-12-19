@@ -112,6 +112,10 @@ function transpileJSX(jsxCode) {
     }
   }
 
+const moduleTag = "type=module";
+const htmlCode = `<div id="weather-app" class="min-h-screen bg-gray-900 text-white p-4"></div>`;
+
+
 
 export class JsViewModel implements ViewModel {
     viewType: string;
@@ -222,8 +226,6 @@ function JsView({ blockId, model }: { blockId: string, model: JsViewModel }) {
 
 
 
-const moduleTag = "type=module";
-const htmlCode = `<div id="weather-app" class="min-h-screen bg-gray-900 text-white p-4"></div>`;
 
 function makeJsViewModel(blockId: string, nodeModel: BlockNodeModel): JsViewModel {
     return new JsViewModel(blockId, nodeModel);
